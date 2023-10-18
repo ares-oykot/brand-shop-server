@@ -33,7 +33,11 @@ async function run() {
         res.send(result);
     })
     //////////////////////////////////////////////
-    
+    app.get('/brands', async (req, res) => {
+        const cursor = brandNameCollection.find();
+        const result = await cursor.toArray();
+        res.send(result);
+    })
     //////////////////////////////////////////////
 
 
