@@ -12,7 +12,6 @@ app.use(express.json());
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.202owzh.mongodb.net/?retryWrites=true&w=majority`;
 
-
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
@@ -24,6 +23,24 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     await client.connect();
+    const brandNameCollection = client.db('brandShopDB').collection('brandName');
+
+    //////////////////////////////////////////////
+    app.post('/brands', async(req, res) => {
+        const brand = req.body;
+        console.log(brand);
+        const result = await brandNameCollection.insertOne(brand);
+        res.send(result);
+    })
+    //////////////////////////////////////////////
+    
+    //////////////////////////////////////////////
+
+
+
+
+
+
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
