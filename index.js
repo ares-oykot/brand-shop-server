@@ -54,6 +54,27 @@ async function run() {
             const result = await appleCollection.findOne(query);
             res.send(result);
         });
+        ///////////////
+        app.put('/apple/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = {_id: new ObjectId(id)};
+            const options = {upsert: true};
+            const updateApple = req.body;
+            const apple = {
+                $set: {
+                    name: updateApple.name,
+                    price: updateApple.price,
+                    description: updateApple.description,
+                    rating: updateApple.rating,
+                    URL: updateApple.URL,
+                    productType: updateApple.productType,
+                    brand: updateApple.brand
+
+                }
+            }
+            const result = await appleCollection.updateOne(filter, apple, options);
+            res.send(result);
+        });
         //////////////////////////////////////////////
 
         ////////////////////////////////////////////// Samsung
@@ -73,6 +94,27 @@ async function run() {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
             const result = await samsungCollection.findOne(query);
+            res.send(result);
+        });
+        ///////////////
+        app.put('/samsung/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = {_id: new ObjectId(id)};
+            const options = {upsert: true};
+            const updateSamsung = req.body;
+            const samsung = {
+                $set: {
+                    name: updateSamsung.name,
+                    price: updateSamsung.price,
+                    description: updateSamsung.description,
+                    rating: updateSamsung.rating,
+                    URL: updateSamsung.URL,
+                    productType: updateSamsung.productType,
+                    brand: updateSamsung.brand
+
+                }
+            }
+            const result = await samsungCollection.updateOne(filter, samsung, options);
             res.send(result);
         });
         //////////////////////////////////////////////
@@ -96,6 +138,27 @@ async function run() {
             const result = await asusCollection.findOne(query);
             res.send(result);
         });
+        ///////////////
+        app.put('/asus/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = {_id: new ObjectId(id)};
+            const options = {upsert: true};
+            const updateAsus = req.body;
+            const asus = {
+                $set: {
+                    name: updateAsus.name,
+                    price: updateAsus.price,
+                    description: updateAsus.description,
+                    rating: updateAsus.rating,
+                    URL: updateAsus.URL,
+                    productType: updateAsus.productType,
+                    brand: updateAsus.brand
+
+                }
+            }
+            const result = await asusCollection.updateOne(filter, asus, options);
+            res.send(result);
+        });
         //////////////////////////////////////////////
 
         ////////////////////////////////////////////// Xiaomi
@@ -115,6 +178,27 @@ async function run() {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
             const result = await xiaomiCollection.findOne(query);
+            res.send(result);
+        });
+        ///////////////
+        app.put('/xiaomi/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = {_id: new ObjectId(id)};
+            const options = {upsert: true};
+            const updateXiaomi = req.body;
+            const xiaomi = {
+                $set: {
+                    name: updateXiaomi.name,
+                    price: updateXiaomi.price,
+                    description: updateXiaomi.description,
+                    rating: updateXiaomi.rating,
+                    URL: updateXiaomi.URL,
+                    productType: updateXiaomi.productType,
+                    brand: updateXiaomi.brand
+
+                }
+            }
+            const result = await xiaomiCollection.updateOne(filter, xiaomi, options);
             res.send(result);
         });
         //////////////////////////////////////////////
@@ -138,6 +222,27 @@ async function run() {
             const result = await sonyCollection.findOne(query);
             res.send(result);
         });
+        ///////////////
+        app.put('/sony/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = {_id: new ObjectId(id)};
+            const options = {upsert: true};
+            const updateSony = req.body;
+            const sony = {
+                $set: {
+                    name: updateSony.name,
+                    price: updateSony.price,
+                    description: updateSony.description,
+                    rating: updateSony.rating,
+                    URL: updateSony.URL,
+                    productType: updateSony.productType,
+                    brand: updateSony.brand
+
+                }
+            }
+            const result = await sonyCollection.updateOne(filter, sony, options);
+            res.send(result);
+        });
         //////////////////////////////////////////////
 
         ////////////////////////////////////////////// Google
@@ -157,6 +262,27 @@ async function run() {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
             const result = await googleCollection.findOne(query);
+            res.send(result);
+        });
+        ///////////////
+        app.put('/google/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = {_id: new ObjectId(id)};
+            const options = {upsert: true};
+            const updateGoogle = req.body;
+            const google = {
+                $set: {
+                    name: updateGoogle.name,
+                    price: updateGoogle.price,
+                    description: updateGoogle.description,
+                    rating: updateGoogle.rating,
+                    URL: updateGoogle.URL,
+                    productType: updateGoogle.productType,
+                    brand: updateGoogle.brand
+
+                }
+            }
+            const result = await googleCollection.updateOne(filter, google, options);
             res.send(result);
         });
         //////////////////////////////////////////////
@@ -182,6 +308,7 @@ async function run() {
             const id = req.params.id;
             const query = {_id: new ObjectId(id)};
             const result = await cartCollection.deleteOne(query);
+            res.send(result);
         })
         //////////////////////////////////////////////
 
@@ -214,7 +341,7 @@ run().catch(console.dir);
 
 
 app.get('/', (req, res) => {
-    res.send('Coffee Server is running');
+    res.send('Brand Shop Server is running');
 });
 app.listen(port, () => {
     console.log(`Server is running on port : ${port}`);
